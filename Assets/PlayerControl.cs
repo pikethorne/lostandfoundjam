@@ -35,6 +35,9 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        velocities = new Dictionary<string, Vector2>();
+        velocities["PlayerControl|PlayerMovement"] = new Vector2(0, 0);
     }
 
     /// <summary>
@@ -48,6 +51,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        for (int i = 0; i < )
         if (rb.velocity.magnitude > speed)
         {
             rb.velocity = rb.velocity.normalized * speed;
