@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "6.08/x64" 1611807410
+<REAPER_PROJECT 0.1 "6.08/x64" 1611809029
   RIPPLE 0
   GROUPOVERRIDE 0 0 0
   AUTOXFADE 1
@@ -14,8 +14,8 @@
   TIMEMODE 1 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 0.64938516051498
-  ZOOM 933.19040354944354 0 0
+  CURSOR 1.21723853492302
+  ZOOM 1406.46221006162 0 0
   VZOOMEX 6 0
   USE_REC_CFG 0
   RECMODE 1
@@ -27,7 +27,7 @@
   >
   <APPLYFX_CFG
   >
-  RENDER_FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Final\walking-grass.wav"
+  RENDER_FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Final\walking-stone2.wav"
   RENDER_FMT 0 2 44100
   RENDER_1X 0
   RENDER_RANGE 2 0 0 18 1000
@@ -160,14 +160,14 @@
     BEAT -1
     AUTOMODE 0
     VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 0 0
+    MUTESOLO 1 0 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
     FREEMODE 0
-    SEL 1
+    SEL 0
     REC 0 0 1 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0
@@ -209,7 +209,7 @@
       FADEIN 1 0 0 1 0 0
       FADEOUT 2 0 0 2 0 -1
       MUTE 0
-      SEL 1
+      SEL 0
       IGUID {6F744DAE-207A-4005-AFA4-D063EDA719E5}
       IID 16
       NAME 175955__freefire66__grass1.wav
@@ -229,7 +229,7 @@
     BEAT -1
     AUTOMODE 0
     VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 0 0
+    MUTESOLO 1 0 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
@@ -247,5 +247,143 @@
     PERF 0
     MIDIOUT -1
     MAINSEND 1 0
+  >
+  <TRACK {D6826754-5C73-4CFE-AB15-2B6B88D60C4B}
+    NAME ""
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 0
+    REC 0 0 1 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {D6826754-5C73-4CFE-AB15-2B6B88D60C4B}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0.09314150004376
+      SNAPOFFS 0
+      LENGTH 0.20880913196249
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0
+      FADEOUT 1 0.01 0 1 0 0
+      MUTE 0
+      SEL 0
+      IGUID {1043F32F-E0B6-415D-BE77-5F4335379876}
+      IID 32
+      NAME 504592__davidsonfreemedia__walking-on-stones.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.039396577809
+      PLAYRATE 1.66044776119405 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {5104FB17-7502-4FC4-B03A-D0B62BF4E9A2}
+      <SOURCE MP3
+        FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Sources\Walking\504592__davidsonfreemedia__walking-on-stones.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 0.4189927355798
+      SNAPOFFS 0
+      LENGTH 0.22824923958695
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0
+      FADEOUT 1 0.01 0 1 0 0
+      MUTE 0
+      SEL 0
+      IGUID {E11DE608-3390-4438-8DCB-3E18831917B1}
+      IID 26
+      NAME 504592__davidsonfreemedia__walking-on-stones.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 0.52293722496917
+      PLAYRATE 2.30939522077825 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {0BA9737F-3FA3-4213-A368-AAD3D207E002}
+      <SOURCE MP3
+        FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Sources\Walking\504592__davidsonfreemedia__walking-on-stones.mp3" 1
+      >
+    >
+  >
+  <TRACK {38FC950F-477F-41CB-8C25-D708862D008C}
+    NAME ""
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 1
+    REC 0 0 1 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {38FC950F-477F-41CB-8C25-D708862D008C}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0.09243049622663
+      SNAPOFFS 0
+      LENGTH 0.09882953058078
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.004266 0 1 0 0
+      FADEOUT 1 0.002844 0 1 0 0
+      MUTE 0
+      SEL 0
+      IGUID {0E4F79B5-8230-41F6-94CB-AC6BDACBE7C6}
+      IID 24
+      NAME 504592__davidsonfreemedia__walking-on-stones.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 1.16169949420102
+      PLAYRATE 1.69794927289809 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4957437B-6F24-4560-9D05-F7A568A37981}
+      <SOURCE MP3
+        FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Sources\Walking\504592__davidsonfreemedia__walking-on-stones.mp3" 1
+      >
+    >
+    <ITEM
+      POSITION 0.41878124828835
+      SNAPOFFS 0
+      LENGTH 0.12442566799739
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.003555 0 1 0 0
+      FADEOUT 1 0.00711 0 1 0 0
+      MUTE 0
+      SEL 0
+      IGUID {1BA1ECA9-A4A7-4659-8E92-5814CA88C573}
+      IID 29
+      NAME 504592__davidsonfreemedia__walking-on-stones.mp3
+      VOLPAN 1 0 1 -1
+      SOFFS 1.68922096951694
+      PLAYRATE 2.43259001441311 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {C941FF46-9899-41E5-8158-15A3C6A7BBE6}
+      <SOURCE MP3
+        FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Sources\Walking\504592__davidsonfreemedia__walking-on-stones.mp3" 1
+      >
+    >
   >
 >
