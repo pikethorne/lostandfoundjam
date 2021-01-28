@@ -200,8 +200,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeadRef: {fileID: 7263078385376080731}
   BodyRef: {fileID: 4100910594056263363}
-  ArmRef: {fileID: 4100910595273149439}
-  GunRef: {fileID: 4100910595226038136}
+  ArmRef: {fileID: 4100910595226038136}
+  GunRef: {fileID: 4100910595273149439}
 --- !u!1 &4100910593868761972
 GameObject:
   m_ObjectHideFlags: 0

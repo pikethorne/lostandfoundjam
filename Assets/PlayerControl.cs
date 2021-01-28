@@ -29,6 +29,15 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        UpdateGunPosition();
+    }
+
+    void UpdateGunPosition()
+    {
+        Vector3 cursorPos = (Input.mousePosition - (new Vector3(Screen.width, Screen.height))/2f).normalized;
+
+        GunRef.position = transform.position + cursorPos * 0.65f;
+
+        GunRef.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(cursorPos.y, cursorPos.x) * Mathf.Rad2Deg);
     }
 }
