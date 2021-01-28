@@ -51,14 +51,16 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        for (int i = 0; i < )
-        if (rb.velocity.magnitude > speed)
+        for (int i = 0; i < velocities.Count; i++)
         {
-            rb.velocity = rb.velocity.normalized * speed;
-        }
-        else if (moveVec.magnitude <= 0.025f)
-        {
-            rb.velocity = Vector2.zero;
+            if (rb.velocity.magnitude > speed)
+            {
+                rb.velocity = rb.velocity.normalized * speed;
+            }
+            else if (moveVec.magnitude <= 0.025f)
+            {
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 
