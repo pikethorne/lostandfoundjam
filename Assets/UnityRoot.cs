@@ -22,11 +22,11 @@ public class UnityRoot : MonoBehaviour
             foreach(GameObject g in GameObject.FindGameObjectsWithTag("Tile"))
             {
 
-                Vector3 axk = g.transform.position;
-                axk.x = Mathf.Floor(axk.x);
-                axk.y = Mathf.Floor(axk.y);
-                axk.z = Mathf.Floor(axk.z);
-                g.transform.position = axk;
+                Vector3 pos = g.transform.position;
+                pos.x = Mathf.Floor(pos.x);
+                pos.y = Mathf.Floor(pos.y);
+                pos.z = Mathf.Floor(pos.z);
+                g.transform.position = pos;
             }
         }
     }
