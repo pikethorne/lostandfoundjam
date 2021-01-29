@@ -25,6 +25,10 @@ class HealthGUISync : MonoBehaviour
 	{
 		healthBox.sizeDelta = new Vector2(PlayerInfo.Instance.health / PlayerInfo.Instance.maxHealth *fullWidth,
 			healthBox.sizeDelta.y);
-		healthAmount.text = PlayerInfo.Instance?.health.ToString("000") ?? "";
+
+        if (healthAmount != null && PlayerInfo.Instance != null)
+        {
+            healthAmount.text = PlayerInfo.Instance.health.ToString("000");
+        }
 	}
 }
