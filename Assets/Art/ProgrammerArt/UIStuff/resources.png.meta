@@ -29,6 +29,12 @@ TextureImporter:
   - first:
       213: 6802217041746021301
     second: shootUp
+  - first:
+      213: 4862175655979564754
+    second: heartBullet
+  - first:
+      213: -4689007363366001974
+    second: basicBullet
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -293,7 +299,7 @@ TextureImporter:
         width: 136
         height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -314,7 +320,7 @@ TextureImporter:
         width: 152
         height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -322,6 +328,48 @@ TextureImporter:
       bones: []
       spriteID: 5bb416a1c54566e50800000000000000
       internalID: 6802217041746021301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: heartBullet
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 209
+        width: 95
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2deb63a8ffae97340800000000000000
+      internalID: 4862175655979564754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basicBullet
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 207
+        width: 85
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2e06d75ac4deeb0800000000000000
+      internalID: -4689007363366001974
       vertices: []
       indices: 
       edges: []

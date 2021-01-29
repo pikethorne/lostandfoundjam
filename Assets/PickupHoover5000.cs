@@ -19,5 +19,13 @@ class PickupHoover5000: MonoBehaviour
 
 			Destroy(col.gameObject);
 		}
+		else if(col.gameObject.tag == "Part")
+		{
+			CharacterPartHolder pickup = col.gameObject.GetComponent<CharacterPartHolder>();
+			
+			PlayerInfo.Instance.givePart(pickup.characterPart);
+
+			Destroy(col.gameObject);
+		}
 	}
 }

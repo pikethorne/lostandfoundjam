@@ -15,14 +15,14 @@ public class StatUpgrade
 		Keys
 	}
 
-	public int damage;
+	public float damage;
 	public float speed;
 	public float health;
-	public int fireRate;
+	public float fireRate;
 	public int instantEffectValue;
 	public InstantEffect instantEffect;
 
-	public StatUpgrade(int damage = 0, float speed = 0, float health = 0, int fireRate = 0, int instantEffectValue = 0, InstantEffect instantEffect = InstantEffect.None)
+	public StatUpgrade(float damage = 0, float speed = 0, float health = 0, float fireRate = 0, int instantEffectValue = 0, InstantEffect instantEffect = InstantEffect.None)
 	{
 		this.damage = damage;
 		this.speed = speed;
@@ -37,15 +37,15 @@ public class StatUpgrade
 	{
 		if (instantEffect == InstantEffect.Coins)
 		{
-			Resources.Instance.addCoins(instantEffectValue);
+			Pickups.Instance.addCoins(instantEffectValue);
 		}
 		else if (instantEffect == InstantEffect.Bombs)
 		{
-			Resources.Instance.addBomb(instantEffectValue);
+			Pickups.Instance.addBomb(instantEffectValue);
 		}
 		else if (instantEffect == InstantEffect.Keys)
 		{
-			Resources.Instance.addKey(instantEffectValue);
+			Pickups.Instance.addKey(instantEffectValue);
 		}
 	}
 }
