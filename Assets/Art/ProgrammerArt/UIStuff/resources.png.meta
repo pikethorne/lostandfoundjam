@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: -7742461276724822292
     second: Coins
+  - first:
+      213: -9184849575763380954
+    second: healthGooFull
+  - first:
+      213: 9013548742856534495
+    second: healthGooEmpty
+  - first:
+      213: 5670342048071295301
+    second: idkWhatThisIsSupposedToBe
+  - first:
+      213: -2326459205579473762
+    second: sord
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -149,7 +161,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,7 +182,7 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,6 +190,90 @@ TextureImporter:
       bones: []
       spriteID: cee79997d704d8490800000000000000
       internalID: -7742461276724822292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healthGooFull
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 538
+        width: 660
+        height: 160
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625f93969fbd88080800000000000000
+      internalID: -9184849575763380954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: healthGooEmpty
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 386
+        width: 660
+        height: 160
+      alignment: 4
+      pivot: {x: 0, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9e1a763de861d70800000000000000
+      internalID: 9013548742856534495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idkWhatThisIsSupposedToBe
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 443
+        width: 133
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541204acc0a11be40800000000000000
+      internalID: 5670342048071295301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sord
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 641
+        width: 122
+        height: 360
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9c7ffabda1c6bfd0800000000000000
+      internalID: -2326459205579473762
       vertices: []
       indices: 
       edges: []

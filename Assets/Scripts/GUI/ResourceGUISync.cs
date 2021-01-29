@@ -19,20 +19,7 @@ class ResourceGUISync : MonoBehaviour
 
 	public void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.B))
-		{
-			Resources.Instance.addBomb();
-		}
-
-		if (Input.GetKeyDown(KeyCode.N))
-		{
-			Resources.Instance.addKey();
-		}
-
-		if (Input.GetKeyDown(KeyCode.M))
-		{
-			Resources.Instance.addCoins();
-		}
+		
 	}
 
 	/// <summary>
