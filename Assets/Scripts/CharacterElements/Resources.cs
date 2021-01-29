@@ -78,7 +78,7 @@ public class Resources
 		if (keys + valueAdded <= 99)
 		{
 			keys+=valueAdded;
-			KeysUpdated.Invoke();
+			KeysUpdated?.Invoke();
 			return true;
 		}
 		else
@@ -97,7 +97,7 @@ public class Resources
 		if (keys - valueRemoved >= 0)
 		{
 			keys -= valueRemoved;
-			KeysUpdated.Invoke();
+			KeysUpdated?.Invoke();
 			return true;
 		}
 		else

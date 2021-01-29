@@ -19,10 +19,16 @@ TextureImporter:
     second: healthGooEmpty
   - first:
       213: 5670342048071295301
-    second: idkWhatThisIsSupposedToBe
+    second: attack
   - first:
       213: -2326459205579473762
     second: sord
+  - first:
+      213: -4705007218875309010
+    second: itCate
+  - first:
+      213: 6802217041746021301
+    second: shootUp
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -237,11 +243,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idkWhatThisIsSupposedToBe
+      name: attack
       rect:
         serializedVersion: 2
-        x: 817
-        y: 443
+        x: 728
+        y: 490
         width: 133
         height: 142
       alignment: 0
@@ -274,6 +280,48 @@ TextureImporter:
       bones: []
       spriteID: e9c7ffabda1c6bfd0800000000000000
       internalID: -2326459205579473762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: itCate
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 488
+        width: 136
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e24e945dcd474beb0800000000000000
+      internalID: -4705007218875309010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shootUp
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 334
+        width: 152
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb416a1c54566e50800000000000000
+      internalID: 6802217041746021301
       vertices: []
       indices: 
       edges: []
