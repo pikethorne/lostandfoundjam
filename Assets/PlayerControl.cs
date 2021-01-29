@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
 
     Vector2 moveVec;
 
-    float speed = 3.5f;
+    public float speed = 3.5f;
 
     /// <summary>
     /// You know what this is
@@ -38,6 +38,8 @@ public class PlayerControl : MonoBehaviour
 
         velocities = new Dictionary<string, Vector2>();
         velocities["PlayerControl|PlayerMovement"] = new Vector2(0, 0);
+
+		PlayerInfo.Instance.playerControls = this;
     }
 
     /// <summary>

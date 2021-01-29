@@ -7,6 +7,7 @@ class HealthGUISync : MonoBehaviour
 	TextMeshProUGUI healthAmount;
 	[SerializeField]
 	RectTransform healthBox;
+	
 	private float fullWidth;
 
 	public void Awake()
@@ -18,17 +19,15 @@ class HealthGUISync : MonoBehaviour
 
 	public void Update()
 	{
-		
 	}
 
 	private void ＵｐｄａｔｅＨｅｌｔｈ()
 	{
 		healthBox.sizeDelta = new Vector2(PlayerInfo.Instance.health / PlayerInfo.Instance.maxHealth *fullWidth,
 			healthBox.sizeDelta.y);
-
-        if (healthAmount != null && PlayerInfo.Instance != null)
-        {
-            healthAmount.text = PlayerInfo.Instance.health.ToString("000");
-        }
+		if (healthAmount != null && PlayerInfo.Instance != null)
+		{
+			healthAmount.text = PlayerInfo.Instance.health.ToString("0");
+		}
 	}
 }
