@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "6.08/x64" 1611893575
+<REAPER_PROJECT 0.1 "6.08/x64" 1611898081
   RIPPLE 0
   GROUPOVERRIDE 0 0 0
   AUTOXFADE 1
@@ -14,7 +14,7 @@
   TIMEMODE 1 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 0.24387430927488
+  CURSOR 0.60293123692449
   ZOOM 1406.46221006162 0 0
   VZOOMEX 6 0
   USE_REC_CFG 0
@@ -27,7 +27,7 @@
   >
   <APPLYFX_CFG
   >
-  RENDER_FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Final\walking-hardmetal.wav"
+  RENDER_FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Final\walking-stone.wav"
   RENDER_FMT 0 2 44100
   RENDER_1X 0
   RENDER_RANGE 2 0 0 18 1000
@@ -367,7 +367,7 @@
     BEAT -1
     AUTOMODE 0
     VOLPAN 1 0 -1 -1 1
-    MUTESOLO 0 0 0
+    MUTESOLO 1 0 0
     IPHASE 0
     PLAYOFFS 0 1
     ISBUS 0 0
@@ -642,6 +642,90 @@
       GUID {F60A7BFD-2F6B-44E8-BAA2-37441211D663}
       <SOURCE WAVE
         FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Sources\Walking\445776__ddt197__metal-stairs.wav"
+      >
+    >
+  >
+  <TRACK {7D5DCDC5-E463-44DA-AA83-2F1412048474}
+    NAME walking-stone
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FREEMODE 0
+    SEL 1
+    REC 0 0 1 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {7D5DCDC5-E463-44DA-AA83-2F1412048474}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <FXCHAIN
+      WNDRECT 1391 234 839 523
+      SHOW 0
+      LASTSEL 0
+      DOCKED 0
+      BYPASS 0 0 0
+      <VST "VST: ReaFir (FFT EQ+Dynamics Processor) (Cockos)" reafir.dll 0 "" 1919247986<56535472656672726561666972202866> ""
+        cmZlcu5e7f4CAAAAAQAAAAAAAAACAAAAAAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAWAAAAAEAAAAAABAA
+        nBIAAAAAtMIAAMBBABAAAAAAgD8AAAAAAgAAAAMAAAAQPvVDt23bvgFOhUVYfI/BAfM/RnVQV8EAAAAAAAAAAK1VAzwAAIA/s6IEOAAAAD4AAAAAAAAAAA==
+        AAAQAAAA
+      >
+      FLOATPOS 0 0 0 0
+      FXID {729DAF6A-F44A-4708-965A-D29B1AE93CC1}
+      WAK 0 0
+    >
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 0.13864574433995
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0
+      FADEOUT 1 0.01 0 1 0 0
+      MUTE 0
+      SEL 0
+      IGUID {DDED6E49-C9AD-4A91-8C48-AE5414AE5450}
+      IID 16
+      NAME 437011__samuelgremaud__stone.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 11.26317810362476
+      PLAYRATE 1.25128205128205 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {00B54841-3E8B-4409-A24D-E27ACE28D252}
+      <SOURCE WAVE
+        FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Sources\Walking\437011__samuelgremaud__stone.wav"
+      >
+    >
+    <ITEM
+      POSITION 0.42304727119112
+      SNAPOFFS 0
+      LENGTH 0.09882953058078
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0
+      FADEOUT 1 0 0 1 0 0
+      MUTE 0
+      SEL 0
+      IGUID {BFC18F9A-FC19-4047-AE07-B9EFE98B3251}
+      IID 10
+      NAME 437011__samuelgremaud__stone.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 10.22724554206937
+      PLAYRATE 1.67625899280576 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {CEC50FE9-B429-4D25-9A38-F486E2D029B9}
+      <SOURCE WAVE
+        FILE "D:\Users\Chana-PC\Documents\Projects\2021LostAndFoundJam\Sounds\Sources\Walking\437011__samuelgremaud__stone.wav"
       >
     >
   >
