@@ -8,6 +8,10 @@ using UnityEngine;
 [ExecuteInEditMode()]
 public class UnityRoot : MonoBehaviour
 {
+    public string Tileset = "ProgrammerTileset";
+
+    string RoomPath = "Rooms/";
+
     /// <summary>
     /// builds the fucking dungeons you idiot
     /// is this should be a class?
@@ -210,23 +214,58 @@ public class UnityRoot : MonoBehaviour
             DungeonBuilder db = new DungeonBuilder();
 
             Debug.Log(string.Format("Created node map with {0} nodes!", db.NodeMap.Count));
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!Application.isPlaying)
-        {
-            foreach(GameObject g in GameObject.FindGameObjectsWithTag("Tile"))
+            for(int i = 0; i < db.NodeMap.Count; i++)
             {
+                DungeonBuilder.Node n = db.NodeMap[i];
 
-                Vector3 pos = g.transform.position;
-                pos.x = Mathf.Floor(pos.x);
-                pos.y = Mathf.Floor(pos.y);
-                pos.z = Mathf.Floor(pos.z);
-                g.transform.position = pos;
+                if (n.nodeType == DungeonBuilder.NodeType.Normal)
+                {
+                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + string.Format("{0}Exits",n.Connections.Length));
+
+                    if (RoomOptions.Length <= 0)
+                    {
+                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + string.Format("{0}Exits", n.Connections.Length) + "] Folder!");
+                    }
+                    else
+                    {
+                        GameObject g = GameObject.Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
+
+                        g.transform.position = Vector3.zero + Vector3.right * n.spawnIndex * 50;
+                    }
+                }
+                else if(n.nodeType == DungeonBuilder.NodeType.Boss)
+                {
+                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + "Boss");
+
+                    if (RoomOptions.Length <= 0)
+                    {
+                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Boss" + "] Folder!");
+                    }
+                    else
+                    {
+                        GameObject g = GameObject.Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
+
+                        g.transform.position = Vector3.zero + Vector3.right * n.spawnIndex * 50;
+                    }
+                }
+                else if (n.nodeType == DungeonBuilder.NodeType.Treasure)
+                {
+                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + "Treasure");
+
+                    if (RoomOptions.Length <= 0)
+                    {
+                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Treasure" + "] Folder!");
+                    }
+                    else
+                    {
+                        GameObject g = GameObject.Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
+
+                        g.transform.position = Vector3.zero + Vector3.right * n.spawnIndex * 50;
+                    }
+                }
             }
         }
     }
+
 }

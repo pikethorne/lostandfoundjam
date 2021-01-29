@@ -64,10 +64,12 @@
   <ItemGroup>
     <Compile Include="Assets\PickupHoover5000.cs" />
     <Compile Include="Assets\PlayerControl.cs" />
+    <Compile Include="Assets\RoomController.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\CharacterPart.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\Resources.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\StatUpgrade.cs" />
+    <Compile Include="Assets\Scripts\CharacterPartHolder.cs" />
     <Compile Include="Assets\Scripts\GUI\HealthGUISync.cs" />
     <Compile Include="Assets\Scripts\GUI\ResourceGUISync.cs" />
     <Compile Include="Assets\Scripts\PickupHolder.cs" />
