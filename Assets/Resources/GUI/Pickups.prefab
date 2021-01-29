@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 263301440961628063}
   - component: {fileID: 263301440961628062}
   m_Layer: 0
-  m_Name: Resources
+  m_Name: Pickups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 263301440961628061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb3f03ca0faf0fa43941c48bd3a31b1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ca2928a217a4f94e8c5489896d4dfd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bombLevel: {fileID: 263301440582741530}

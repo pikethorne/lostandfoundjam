@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-class ResourceGUISync : MonoBehaviour
+class PickupGUISync : MonoBehaviour
 {
 	[SerializeField]
 	TextMeshProUGUI bombLevel;
@@ -12,9 +12,9 @@ class ResourceGUISync : MonoBehaviour
 
 	public void Awake()
 	{
-		Resources.Instance.BombsUpdated += UpdateBombLevel;
-		Resources.Instance.KeysUpdated += UpdateKeyLevel;
-		Resources.Instance.CoinsUpdated += UpdateCoinLevel;
+		Pickups.Instance.BombsUpdated += UpdateBombLevel;
+		Pickups.Instance.KeysUpdated += UpdateKeyLevel;
+		Pickups.Instance.CoinsUpdated += UpdateCoinLevel;
 	}
 
 	public void Update()
@@ -27,7 +27,7 @@ class ResourceGUISync : MonoBehaviour
 	/// </summary>
 	public void UpdateBombLevel()
 	{
-		bombLevel.text = "x" + Resources.Instance.bombs.ToString("00");
+		bombLevel.text = "x" + Pickups.Instance.bombs.ToString("00");
 	}
 
 	/// <summary>
@@ -35,7 +35,7 @@ class ResourceGUISync : MonoBehaviour
 	/// </summary>
 	public void UpdateKeyLevel()
 	{
-		keyLevel.text = "x" + Resources.Instance.keys.ToString("00");
+		keyLevel.text = "x" + Pickups.Instance.keys.ToString("00");
 	}
 
 	/// <summary>
@@ -43,6 +43,6 @@ class ResourceGUISync : MonoBehaviour
 	/// </summary>
 	public void UpdateCoinLevel()
 	{
-		coinLevel.text = "x" + Resources.Instance.coins.ToString("00");
+		coinLevel.text = "x" + Pickups.Instance.coins.ToString("00");
 	}
 }

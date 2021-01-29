@@ -8,9 +8,9 @@ using UnityEngine;
 /// </summary>
 public class PlayerInfo
 {
-	private int baseAttack = 5;
-	private int baseHealth = 50;
-	private int baseShotSpeed = 5;
+	private float baseAttack = 5;
+	private float baseHealth = 50;
+	private float baseShotSpeed = 0.5f;
 	private float baseSpeed = 3.5f;
 
 	public static PlayerInfo Instance
@@ -33,19 +33,31 @@ public class PlayerInfo
 
 	public PlayerControl playerControls;
 
-	public float health { get; private set; } = 0;
-	public float maxHealth { get; private set; } = 0;
+	public float health { get; private set; }
+	public float maxHealth { get; private set; }
 	public Action healthChanged;
-	private int damage;
-	private int shotSpeed;
-	private float speed;
+	public float damage { get; private set; }
+	public float shotSpeed { get; private set; }
+	public float speed { get; private set; }
 	private List<StatUpgrade> statUpgrades;
+	private List<CharacterPart> parts;
+	
 
 	PlayerInfo()
 	{
 		statUpgrades = new List<StatUpgrade>();
-		maxHealth = 50;
-		health = 50;
+		parts = new List<CharacterPart>();
+		InitializePlayerData();
+	}
+
+	public void InitializePlayerData()
+	{
+
+		maxHealth = statUpgrades.Sum(s => s.health) + baseHealth;
+		health = statUpgrades.Sum(s => s.health) + baseHealth;
+		damage = statUpgrades.Sum(s => s.damage) + baseAttack;
+		shotSpeed = statUpgrades.Sum(s => s.fireRate) + baseShotSpeed;
+		speed = statUpgrades.Sum(s => s.speed) + baseSpeed;
 	}
 
 	public void giveStatUpgrade(StatUpgrade statUpgrade)
@@ -61,8 +73,16 @@ public class PlayerInfo
 		damage = statUpgrades.Sum(s => s.damage)+ baseAttack;
 		shotSpeed = statUpgrades.Sum(s => s.fireRate) + baseShotSpeed;
 		speed = statUpgrades.Sum(s => s.speed) + baseSpeed;
-		playerControls.speed = speed;
 
+	}
+
+	public void givePart(CharacterPart part)
+	{
+		parts.RemoveAll(p => p.partType == part.partType);
+		statUpgrades.RemoveAll(s => (s as CharacterPart)?.partType == part.partType);
+		part.EquipPart();
+		parts.Add(part);
+		giveStatUpgrade(part);
 	}
 
 	public void addHealth(int healthAmount)

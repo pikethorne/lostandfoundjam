@@ -27,8 +27,6 @@ public class PlayerControl : MonoBehaviour
 
     Vector2 moveVec;
 
-    public float speed = 3.5f;
-
     /// <summary>
     /// You know what this is
     /// </summary>
@@ -60,10 +58,10 @@ public class PlayerControl : MonoBehaviour
             totalVelocity += vb;
         }
 
-        if (totalVelocity.magnitude > speed * 2f)
+        if (totalVelocity.magnitude > PlayerInfo.Instance.speed * 2f)
         {
-            totalVelocity = totalVelocity * speed;
-        }
+            totalVelocity = totalVelocity * PlayerInfo.Instance.speed;
+		}
         else if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) <= 0.125f && Mathf.Abs(Input.GetAxisRaw("Vertical")) <= 0.125f)
         {
             totalVelocity = Vector2.zero;
@@ -76,8 +74,8 @@ public class PlayerControl : MonoBehaviour
     {
         moveVec = (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"))).normalized;
 
-        velocities["PlayerControl|PlayerMovement"] = moveVec * speed;
-    }
+        velocities["PlayerControl|PlayerMovement"] = moveVec * PlayerInfo.Instance.speed;
+	}
 
     /// <summary>
     /// updates the position of the gun but in english
