@@ -221,11 +221,11 @@ public class UnityRoot : MonoBehaviour
 
                 if (n.nodeType == DungeonBuilder.NodeType.Normal)
                 {
-                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + string.Format("{0}Exits",n.Connections.Length));
+                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + string.Format("/{0}Exits",n.Connections.Length));
 
                     if (RoomOptions.Length <= 0)
                     {
-                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + string.Format("{0}Exits", n.Connections.Length) + "] Folder!");
+                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + string.Format("/{0}Exits", n.Connections.Length) + "] Folder!");
                     }
                     else
                     {
@@ -236,7 +236,7 @@ public class UnityRoot : MonoBehaviour
                 }
                 else if(n.nodeType == DungeonBuilder.NodeType.Boss)
                 {
-                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + "Boss");
+                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Boss");
 
                     if (RoomOptions.Length <= 0)
                     {
@@ -251,7 +251,7 @@ public class UnityRoot : MonoBehaviour
                 }
                 else if (n.nodeType == DungeonBuilder.NodeType.Treasure)
                 {
-                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + "Treasure");
+                    GameObject[] RoomOptions = UnityEngine.Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Treasure");
 
                     if (RoomOptions.Length <= 0)
                     {
