@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
 
     Vector2 moveVec;
 
-    float speed = 15f;
+    float speed = 3.5f;
 
     /// <summary>
     /// You know what this is
@@ -51,32 +51,41 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        for (int i = 0; i < velocities.Count; i++)
+        Vector2 totalVelocity = Vector2.zero;
+
+        foreach(Vector2 vb in velocities.Values)
         {
-            if (rb.velocity.magnitude > speed)
-            {
-                rb.velocity = rb.velocity.normalized * speed;
-            }
-            else if (moveVec.magnitude <= 0.025f)
-            {
-                rb.velocity = Vector2.zero;
-            }
+            totalVelocity += vb;
         }
+
+        if (totalVelocity.magnitude > speed * 2f)
+        {
+            totalVelocity = totalVelocity * speed;
+        }
+        else if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) <= 0.125f && Mathf.Abs(Input.GetAxisRaw("Vertical")) <= 0.125f)
+        {
+            totalVelocity = Vector2.zero;
+        }
+
+        rb.velocity = totalVelocity;
     }
 
     void HandleMovement()
     {
         moveVec = (new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"))).normalized;
 
-        rb.velocity += moveVec * speed * Time.deltaTime;
+        velocities["PlayerControl|PlayerMovement"] = moveVec * speed;
     }
 
     void UpdateGunPosition()
     {
-        Vector3 cursorPos = (Input.mousePosition - (new Vector3(Screen.width, Screen.height)) / 2f).normalized;
+        Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPos.z = 0;
 
-        GunRef.position = transform.position + cursorPos * 0.65f;
+        Vector3 vecDiff = (cursorPos - transform.position).normalized;
 
-        GunRef.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(cursorPos.y, cursorPos.x) * Mathf.Rad2Deg);
+        GunRef.position = transform.position + vecDiff * 0.65f;
+
+        GunRef.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(vecDiff.y, vecDiff.x) * Mathf.Rad2Deg);
     }
 }
