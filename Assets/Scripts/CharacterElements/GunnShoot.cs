@@ -14,7 +14,7 @@ class GunnShoot : MonoBehaviour
 			if(elapsedTime>PlayerInfo.Instance.shotSpeed)
 			{
 				elapsedTime -= PlayerInfo.Instance.shotSpeed;
-				GameObject g = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+				GameObject g = Instantiate(bulletPrefab, this.transform.position, this.transform.parent.transform.rotation);
 				g.AddComponent<Bullet>().InitializeBullet(bulletModel, PlayerInfo.Instance.damage);
 			}
 		}

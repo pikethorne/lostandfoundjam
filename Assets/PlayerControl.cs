@@ -85,9 +85,7 @@ public class PlayerControl : MonoBehaviour
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPos.z = 0;
 
-        Vector3 vecDiff = (cursorPos - transform.position).normalized;
-
-        GunRef.position = transform.position + vecDiff * 0.65f;
+        Vector3 vecDiff = (cursorPos - GunRef.transform.position).normalized;
 
         GunRef.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(vecDiff.y, vecDiff.x) * Mathf.Rad2Deg);
     }

@@ -7,7 +7,7 @@ class Bullet : MonoBehaviour
 	public void InitializeBullet(Sprite sprite, float damage)
 	{
 		this.damage = damage;
-		SpriteRenderer spriteComponent = GetComponent<SpriteRenderer>();
+		SpriteRenderer spriteComponent = GetComponentInChildren<SpriteRenderer>();
 		if(spriteComponent != null)
 		{
 			spriteComponent.sprite = sprite;
@@ -18,6 +18,6 @@ class Bullet : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		this.transform.position += this.transform.up * shotSpeed;
+		this.transform.position += this.transform.right * shotSpeed;
 	}
 }

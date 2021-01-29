@@ -232,7 +232,9 @@ public class UnityRoot : MonoBehaviour
                         GameObject g = GameObject.Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
 
                         g.transform.position = Vector3.zero + Vector3.right * n.spawnIndex * 50;
-                    }
+
+						PopulateExits(n, g);
+					}
                 }
                 else if(n.nodeType == DungeonBuilder.NodeType.Boss)
                 {
@@ -247,7 +249,9 @@ public class UnityRoot : MonoBehaviour
                         GameObject g = GameObject.Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
 
                         g.transform.position = Vector3.zero + Vector3.right * n.spawnIndex * 50;
-                    }
+
+						PopulateExits(n, g);
+					}
                 }
                 else if (n.nodeType == DungeonBuilder.NodeType.Treasure)
                 {
@@ -262,10 +266,28 @@ public class UnityRoot : MonoBehaviour
                         GameObject g = GameObject.Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
 
                         g.transform.position = Vector3.zero + Vector3.right * n.spawnIndex * 50;
+
+						PopulateExits(n, g);
                     }
                 }
             }
         }
     }
+
+	private void PopulateExits(DungeonBuilder.Node n, GameObject g)
+	{
+		RoomExit[] roomExitPoints = g.GetComponentsInChildren<RoomExit>();
+		if(n.Connections.Length != roomExitPoints.Length)
+		{
+			Debug.LogError("somehow the number of exits from the prefab doesn't match the number of node exits. Prefab is probably called " + g.name + " or somthing");
+		}
+		else
+		{
+			for(int i =0;i<roomExitPoints.Length; i++)
+			{
+				roomExitPoints[i].teleportID = n.Connections[i].spawnIndex;
+			}
+		}
+	}
 
 }

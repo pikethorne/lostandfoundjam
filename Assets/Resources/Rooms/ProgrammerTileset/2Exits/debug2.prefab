@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7925133838517790405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4549121708139191846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ba4415d5474de43ad7df8195b55c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inactiveSprite: {fileID: 21300000, guid: d07bd05db862e2847ba75457526a1838, type: 3}
+  activeSprite: {fileID: 21300000, guid: b3dd6bfb48cb49b4ba93264bd09fbcc5, type: 3}
+  activateTile: 0
+  teleportID: 0
+--- !u!114 &5531488093289241899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071048490739549476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ba4415d5474de43ad7df8195b55c3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inactiveSprite: {fileID: 21300000, guid: d07bd05db862e2847ba75457526a1838, type: 3}
+  activeSprite: {fileID: 21300000, guid: b3dd6bfb48cb49b4ba93264bd09fbcc5, type: 3}
+  activateTile: 0
+  teleportID: 0
 --- !u!1 &6723627622441527364
 GameObject:
   m_ObjectHideFlags: 0
@@ -6708,6 +6740,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5952109309865448656}
     m_Modifications:
+    - target: {fileID: 308376778326400721, guid: 1eea06c2be3d2514d823371ff2e8d83f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3550441390721829002, guid: 1eea06c2be3d2514d823371ff2e8d83f,
         type: 3}
       propertyPath: m_RootOrder
@@ -6773,6 +6810,12 @@ PrefabInstance:
 --- !u!4 &3321361622850101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3550441390721829002, guid: 1eea06c2be3d2514d823371ff2e8d83f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3552917208523002559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6071048490739549476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7281983112933873563, guid: 1eea06c2be3d2514d823371ff2e8d83f,
     type: 3}
   m_PrefabInstance: {fileID: 3552917208523002559}
   m_PrefabAsset: {fileID: 0}
@@ -12258,6 +12301,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5952109309865448656}
     m_Modifications:
+    - target: {fileID: 308376778326400721, guid: 1eea06c2be3d2514d823371ff2e8d83f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3550441390721829002, guid: 1eea06c2be3d2514d823371ff2e8d83f,
         type: 3}
       propertyPath: m_RootOrder
@@ -12320,6 +12368,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1eea06c2be3d2514d823371ff2e8d83f, type: 3}
+--- !u!1 &4549121708139191846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7281983112933873563, guid: 1eea06c2be3d2514d823371ff2e8d83f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6498543732809697725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7740215214320582967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3550441390721829002, guid: 1eea06c2be3d2514d823371ff2e8d83f,
