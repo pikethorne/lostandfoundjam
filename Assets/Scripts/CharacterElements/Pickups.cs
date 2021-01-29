@@ -4,15 +4,15 @@ using UnityEngine;
 /// <summary>
 /// Class for handling resources level
 /// </summary>
-public class Resources
+public class Pickups
 {
-	public static Resources Instance
+	public static Pickups Instance
 	{
 		get
 		{
 			if (instance == null)
 			{
-				instance = new Resources();
+				instance = new Pickups();
 			}
 			return instance;
 		}
@@ -22,7 +22,7 @@ public class Resources
 		}
 	}
 
-	private static Resources instance;
+	private static Pickups instance;
 
 	public Action BombsUpdated;
 	public Action KeysUpdated;
@@ -41,7 +41,7 @@ public class Resources
 		if (bombs+valueAdded <= 99)
 		{
 			bombs+=valueAdded;
-			BombsUpdated.Invoke();
+			BombsUpdated?.Invoke();
 			return true;
 		}
 		else
@@ -60,7 +60,7 @@ public class Resources
 		if (bombs-valueRemoved >= 0)
 		{
 			bombs-=valueRemoved;
-			BombsUpdated.Invoke();
+			BombsUpdated?.Invoke();
 			return true;
 		}
 		else
@@ -115,7 +115,7 @@ public class Resources
 		if (coins + valueAdded <= 99)
 		{
 			coins+= valueAdded;
-			CoinsUpdated.Invoke();
+			CoinsUpdated?.Invoke();
 			return true;
 		}
 		else
@@ -133,7 +133,7 @@ public class Resources
 		if (coins - valueRemoved >= 0)
 		{
 			coins -= valueRemoved;
-			CoinsUpdated.Invoke();
+			CoinsUpdated?.Invoke();
 			return true;
 		}
 		else
