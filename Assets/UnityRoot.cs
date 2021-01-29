@@ -89,7 +89,7 @@ public class UnityRoot : MonoBehaviour
             bool TreasureSpawned = false;
 
 
-            Node StartNode = new Node(0);
+            Node StartNode = new Node(0, NodeType.Normal);
         }
     }
 
