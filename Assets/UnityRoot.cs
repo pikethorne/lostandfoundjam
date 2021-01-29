@@ -31,43 +31,45 @@ public class UnityRoot : MonoBehaviour
             public int Depth;
 
             /// <summary>
+            /// spawnIndex of a given node
+            /// </summary>
+            public int spawnIndex = -5;
+
+            /// <summary>
             /// connections to other nodes
             /// </summary>
-            private Node[] Connections;
+            public Node[] Connections;
 
-            NodeType nodeType;
+            public NodeType nodeType;
 
             public Node(int d, NodeType nt)
             {
                 Depth = d;
 
                 nodeType = nt;
-
-                // How many branches will this room have
-                int ROLLTHEFUCKINGDICE = 1;
-
-                // boss rooms and such shouldn't really branch unless eric wants them to i guess
-                if (nt == NodeType.Normal)
-                {
-                    ROLLTHEFUCKINGDICE = Random.Range(1, 4);
-                }
             }
         }
+
+        // HAS THE BOSS ROOM SPAWNED
+        public bool BossSpawned = false;
+
+        // TREASURE SPAWNEDED ???
+        public bool TreasureSpawned = false;
 
         /// <summary>
         /// how many nodes deep from the start the dungeon should go, don't go above like 4
         /// </summary>
-        int DungeonDepth = 3;
+        public int DungeonDepth = 2;
 
         /// <summary>
         /// likelihood for branching at lower depth levels, go from 0-1.0
         /// </summary>
-        float Complexity = 0.5f;
+        public float Complexity = 0.25f;
 
         /// <summary>
         /// limit the amount of rooms in a floor. If the max is reached, all unclosed connections will lead to a single exit room
         /// </summary>
-        int nodeMax = 10;
+        public int nodeMax = 5;
 
         /// <summary>
         /// suffer
@@ -82,21 +84,133 @@ public class UnityRoot : MonoBehaviour
 
             NodeMap = new List<Node>();
 
-            // HAS THE BOSS ROOM SPAWNED
-            bool BossSpawned = false;
-
-            // TREASURE SPAWNEDED ???
-            bool TreasureSpawned = false;
-
 
             Node StartNode = new Node(0, NodeType.Normal);
+            NodeSetup(StartNode);
+        }
+
+        /// <summary>
+        /// Initialize a node and its connections
+        /// 
+        /// My brain is worms right now so i'll explain it best I can
+        /// 
+        /// We assume a node always has 1 connection to its previous node, the one that spawned it
+        /// A node can have up to 3 other connections
+        /// 
+        /// Once we have created these potentially 4 connections, one of them has to be to the previous
+        /// node that spawned this one. So if A spawns B, then B MUST have a connection to A and A MUST have a connection to B
+        /// 
+        /// </summary>
+        /// <param name="n"></param>
+        void NodeSetup(Node n, Node prevNode = null)
+        {
+            NodeMap.Add(n);
+            n.spawnIndex = NodeMap.Count - 1;
+
+            // How many branches will this room have
+            int rollthedice = 0;
+
+            // boss rooms and such shouldn't really branch unless eric wants them to i guess (he doesn't)
+            if (n.nodeType == NodeType.Normal)
+            {
+                // if we exceeded the max, this room only has one connection
+                if (NodeMap.Count < nodeMax && n.Depth <= DungeonDepth)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        float limit = 100f * (n.Depth / DungeonDepth) + 10f * i * Mathf.Max((Random.value - Complexity), 0);
+                        float check = Random.value * 100f;
+
+                        rollthedice += 1;
+                    }
+
+                    if (NodeMap.Count < nodeMax - 1 && rollthedice <= 1)
+                    {
+                        rollthedice += Random.Range(1, 4);
+                    }
+                }
+                else
+                {
+                    rollthedice = 0;
+                }
+            }
+
+            // ehhhhh just in case
+            int connectionCount = 1 + Mathf.Min(rollthedice, 3);
+
+            // establish the nodes new node connections
+            n.Connections = new Node[connectionCount];
+
+
+            if (prevNode != null)
+            {
+                // establish the index of by which a node connects back to the node that spawned it
+                int rerun = Mathf.RoundToInt(Random.value * (n.Connections.Length - 1));
+                
+                // the connection index that returns to the previous node
+                n.Connections[rerun] = prevNode;
+            }
+
+
+            for (int i = 0; i < n.Connections.Length; i++)
+            {
+                if (n.Connections[i] == null)
+                {
+                    NodeType newType = NodeType.Normal;
+
+                    if (n.Depth >= 1 && n.Connections.Length > 1)
+                    {
+                        float specialRoll = Random.value * 100f;
+
+                        if (specialRoll > 80f && !BossSpawned)
+                        {
+                            newType = NodeType.Boss;
+                            BossSpawned = true;
+                        }
+                        else if (specialRoll > 50f && !TreasureSpawned)
+                        {
+                            newType = NodeType.Treasure;
+                            TreasureSpawned = true;
+                        }
+                    }
+
+                    if (NodeMap.Count >= nodeMax - 4)
+                    {
+                        if (!BossSpawned)
+                        {
+                            newType = NodeType.Boss;
+                            BossSpawned = true;
+                        }
+                        else if (!TreasureSpawned)
+                        {
+                            newType = NodeType.Treasure;
+                            TreasureSpawned = true;
+                        }
+                    }
+
+                    n.Connections[i] = new Node(n.Depth + 1, newType);
+                }
+            }
+
+            foreach (Node ext in n.Connections)
+            {
+                if (ext.spawnIndex < 0)
+                {
+                    NodeSetup(ext, n);
+                }
+            }
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Application.isPlaying)
+        {
+            DungeonBuilder db = new DungeonBuilder();
+
+            Debug.Log(string.Format("Created node map with {0} nodes!", db.NodeMap.Count));
+        }
     }
 
     // Update is called once per frame
