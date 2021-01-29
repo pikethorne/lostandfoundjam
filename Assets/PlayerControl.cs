@@ -45,7 +45,7 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     void Update()
     {
-        UpdateGunPosition();
+        ガンのウップデート();
         HandleMovement();
     }
 
@@ -77,7 +77,10 @@ public class PlayerControl : MonoBehaviour
         velocities["PlayerControl|PlayerMovement"] = moveVec * speed;
     }
 
-    void UpdateGunPosition()
+    /// <summary>
+    /// updates the position of the gun but in japanese
+    /// </summary>
+    void　ガンのウップデート()
     {
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPos.z = 0;
