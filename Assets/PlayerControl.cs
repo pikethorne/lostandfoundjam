@@ -47,7 +47,7 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     void Update()
     {
-        UpdateGunPosition();
+        UpdateGun();
         HandleMovement();
     }
 
@@ -79,7 +79,10 @@ public class PlayerControl : MonoBehaviour
         velocities["PlayerControl|PlayerMovement"] = moveVec * speed;
     }
 
-    void UpdateGunPosition()
+    /// <summary>
+    /// updates the position of the gun but in english
+    /// </summary>
+    void　UpdateGun()
     {
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPos.z = 0;
