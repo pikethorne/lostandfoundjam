@@ -27,14 +27,15 @@ public class PlayerControl : MonoBehaviour
 
     Vector2 moveVec;
 
+	public AudioSource audioPlayer;
     /// <summary>
     /// You know what this is
     /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        velocities = new Dictionary<string, Vector2>();
+		audioPlayer = GetComponent<AudioSource>();
+		velocities = new Dictionary<string, Vector2>();
         velocities["PlayerControl|PlayerMovement"] = new Vector2(0, 0);
 
 		PlayerInfo.Instance.playerControls = this;

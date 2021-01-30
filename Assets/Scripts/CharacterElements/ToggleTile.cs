@@ -11,17 +11,21 @@ class ToggleTile : MonoBehaviour
 	private void Start()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer>();
+		UpdateTile();
 	}
 
 	public virtual void UpdateTile()
 	{
-		if (activateTile)
+		if(spriteRenderer!=null)
 		{
-			spriteRenderer.sprite = activeSprite;
-		}
-		else
-		{
-			spriteRenderer.sprite = inactiveSprite;
+			if (activateTile)
+			{
+				spriteRenderer.sprite = activeSprite;
+			}
+			else
+			{
+				spriteRenderer.sprite = inactiveSprite;
+			}
 		}
 	}
 }

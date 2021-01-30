@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2252176674678435976}
   - component: {fileID: 6660727642578163793}
   - component: {fileID: 573875396514662769}
-  m_Layer: 14
-  m_Name: Bullet
+  - component: {fileID: 4387935880751696472}
+  m_Layer: 17
+  m_Name: CopterCatBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +71,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4387935880751696472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2252176674678435981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0efac8737885ec74fa4d73dff2b20eed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: 6eb3296349a023b45a5c9e8c477a6fd5, type: 3}
 --- !u!1 &5504899864069316221
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8482516379473564500}
   - component: {fileID: 4052949746226191756}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: BulletModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 5504899864069316221}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2252176674678435976}
   m_RootOrder: 0
@@ -140,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 39493165
   m_SortingLayer: 2
   m_SortingOrder: 15
-  m_Sprite: {fileID: 21300000, guid: ba69cdbd2213ad64f8999c2b519ea7d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fbce560ff7b4c44299ab8d369e3032a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

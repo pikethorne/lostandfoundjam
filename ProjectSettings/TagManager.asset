@@ -23,10 +23,10 @@ TagManager:
   - 
   - Player
   - 
-  - Pickup
-  - 
-  - 
-  - 
+  - Bullet
+  - Pickups
+  - Enemies
+  - EnemyBullets
   - 
   - 
   - 
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 39493165
+    locked: 0
+  - name: Enemy
+    uniqueID: 68691661
     locked: 0
