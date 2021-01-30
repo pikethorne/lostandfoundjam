@@ -18,8 +18,11 @@ public class CharacterPart : StatUpgrade
 	public PartType partType;
 	public Sprite sprite;
 	public Sprite additionalModel;
+	public float rotation;
+	public float scale = 1;
 
-	public CharacterPart(PartType type, Sprite part, Sprite additionalModel, float damage = 0, float speed = 0, float health = 0, float fireRate = 0, int otherFeature = 0)
+	public CharacterPart(PartType type, Sprite part, Sprite additionalModel,float rotation = 0, float scale = 1, 
+		float damage = 0, float speed = 0, float health = 0, float fireRate = 0, int otherFeature = 0)
 		: base(damage,speed,health,fireRate,otherFeature, InstantEffect.None)
 	{
 		this.partType = type;
@@ -29,20 +32,25 @@ public class CharacterPart : StatUpgrade
 
 	public void EquipPart()
 	{
-		
 		switch (partType)
 		{
 			case PartType.head:
 				SpriteRenderer headSprite = PlayerInfo.Instance.playerControls.HeadRef.GetComponentInChildren<SpriteRenderer>();
 				headSprite.sprite = sprite;
+				headSprite.transform.localScale = new Vector3(scale, scale, scale);
+				headSprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
 				break;
 			case PartType.body:
 				SpriteRenderer bodySprite = PlayerInfo.Instance.playerControls.BodyRef.GetComponentInChildren<SpriteRenderer>();
 				bodySprite.sprite = sprite;
+				bodySprite.transform.localScale = new Vector3(scale, scale, scale);
+				bodySprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
 				break;
 			case PartType.arm:
 				SpriteRenderer armSprite = PlayerInfo.Instance.playerControls.ArmRef.GetComponentInChildren<SpriteRenderer>();
 				armSprite.sprite = sprite;
+				armSprite.transform.localScale = new Vector3(scale, scale, scale);
+				armSprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
 				break;case PartType.gun:
 				if (additionalModel != null)
 				{
@@ -50,6 +58,8 @@ public class CharacterPart : StatUpgrade
 				}
 				SpriteRenderer gunSprite = PlayerInfo.Instance.playerControls.GunRef.GetComponentInChildren<SpriteRenderer>();
 				gunSprite.sprite = sprite;
+				gunSprite.transform.localScale = new Vector3(scale, scale, scale);
+				gunSprite.transform.localRotation = Quaternion.Euler(0, 0, rotation);
 				break;
 		}
 	}

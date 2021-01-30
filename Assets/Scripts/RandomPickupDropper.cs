@@ -20,20 +20,21 @@ class RandomPickupDropper : MonoBehaviour
 	{
 	}
 
-	public void spawnAPopup()
+	public GameObject spawnAPickup(bool instaSpawn = true)
 	{
 		int max = pickups.Sum(pick => pick.amount);
-		int value = (int)UnityEngine.Random.Range(1, max);
+		int value = UnityEngine.Random.Range(1, max);
 		foreach(Pickups pickup in pickups)
 		{
 			value -= pickup.amount;
 			if(value<=0)
 			{
 				if (pickup.gameObject != null)
-					Instantiate(pickup.gameObject);
-				break;
+				{
+					return Instantiate(pickup.gameObject,transform.position,transform.rotation);
+				}
 			}
 		}
-		
+		return null;
 	}
 }
