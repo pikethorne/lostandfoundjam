@@ -22,8 +22,7 @@ class PickupHoover5000: MonoBehaviour
 			if (pickupReqs != null && !pickupReqs.requirementsMet())
 				return;
 			pickupReqs?.takeRequirements();
-
-			Debug.Log("Pickingup:" + col.gameObject.name);
+			
 			PickupHolder pickup = col.gameObject.GetComponent<PickupHolder>();
 			if (pickup != null)
 			{
