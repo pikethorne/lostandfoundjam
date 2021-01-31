@@ -24,12 +24,24 @@ public class GameState
 
 	public enum State
 	{
+		Start,
 		Starting,
 		InGame,
-		Paused
+		Paused,
+		Ending,
+		Ended
 	}
 
 	private static GameState instance;
 	public int level;
-	public State state;
+	public State state { get; private set; }
+
+
+	public Action gameStateChanged;
+
+	public void setState(State state)
+	{
+		this.state = state;
+		gameStateChanged?.Invoke();
+	}
 }

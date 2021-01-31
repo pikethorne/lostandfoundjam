@@ -22,6 +22,17 @@ public class Pickups
 		}
 	}
 
+	public void resetPickups()
+	{
+		coins = 0;
+		keys = 0;
+		bombs = 0;
+		BombsUpdated?.Invoke();
+		KeysUpdated?.Invoke();
+		CoinsUpdated?.Invoke();
+	}
+
+
 	private static Pickups instance;
 
 	public Action BombsUpdated;

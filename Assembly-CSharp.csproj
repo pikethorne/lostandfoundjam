@@ -64,6 +64,7 @@
     <Compile Include="Assets\RoomController.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\Bullet.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\CharacterPart.cs" />
+    <Compile Include="Assets\Scripts\CharacterElements\GameStart.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\GameOver.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\GunnShoot.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\Pickups.cs" />

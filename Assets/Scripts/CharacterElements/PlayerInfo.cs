@@ -50,9 +50,15 @@ public class PlayerInfo
 		InitializePlayerData();
 	}
 
+	public void ReinitializePlayerData()
+	{
+		statUpgrades = new List<StatUpgrade>();
+		parts = new List<CharacterPart>();
+		InitializePlayerData();
+	}
+
 	public void InitializePlayerData()
 	{
-
 		maxHealth = statUpgrades.Sum(s => s.health) + baseHealth;
 		health = statUpgrades.Sum(s => s.health) + baseHealth;
 		damage = statUpgrades.Sum(s => s.damage) + baseAttack;

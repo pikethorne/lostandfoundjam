@@ -16,6 +16,7 @@ public class UnityRoot : MonoBehaviour
     string RoomPath = "Rooms/";
 
 	int distanceBetweenNodes = 21;
+	private List<GameObject> objectsToDestroy;
 	/// <summary>
 	/// builds the fucking dungeons you idiot
 	/// is this should be a class?
@@ -285,6 +286,30 @@ public class UnityRoot : MonoBehaviour
         }
     }
 
+	public void Awake()
+	{
+		objectsToDestroy = new List<GameObject>();
+
+		GameState.Instance.gameStateChanged += () =>
+		{
+			if (GameState.Instance.state == GameState.State.Starting)
+			{
+				LoadGame();
+				Pickups.Instance.resetPickups();
+				PlayerInfo.Instance.ReinitializePlayerData();
+				GameState.Instance.setState(GameState.State.InGame);
+			}
+			else if (GameState.Instance.state == GameState.State.Ending)
+			{
+				objectsToDestroy.ForEach(g => Destroy(g));
+				objectsToDestroy.Clear();
+				GameState.Instance.setState(GameState.State.Ended);
+			}
+		};
+	}
+
+
+
     // Start is called before the first frame update
     public void LoadGame()
     {
@@ -292,7 +317,7 @@ public class UnityRoot : MonoBehaviour
         {
 			for (int level = 0; level < 4; level++)
 			{
-				DungeonBuilder db = new DungeonBuilder(4+level, 20+level*3);
+				DungeonBuilder db = new DungeonBuilder(4+level, 10+level*3);
 
 				Debug.Log(string.Format("Created node map with {0} nodes!", db.NodeMap.Count));
 
@@ -359,7 +384,7 @@ public class UnityRoot : MonoBehaviour
 					GameObject g = Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
 					Tuple<int, int> position = db.nodePositions[n.spawnIndex];
 					g.transform.position = Vector3.zero + Vector3.right * position.Item1 * distanceBetweenNodes + Vector3.up * position.Item2 * distanceBetweenNodes + Vector3.right*500*level;
-
+					objectsToDestroy.Add(g);
 					BossItemDecideyTime bossItemLev = g.GetComponent<BossItemDecideyTime>();
 					if(bossItemLev != null)
 					{
@@ -396,6 +421,7 @@ public class UnityRoot : MonoBehaviour
 			for (int i = (int)exit.transform.localPosition.x-1; i >= -distanceBetweenNodes / 2; i--)
 			{
 				GameObject p = Instantiate(horizontalPathOptions[Random.Range(0, horizontalPathOptions.Length)]);
+				objectsToDestroy.Add(p);
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.right * i + Vector3.up * exit.transform.localPosition.y;
 			}
@@ -429,6 +455,7 @@ public class UnityRoot : MonoBehaviour
 			for (int i = (int)exit.transform.localPosition.x+1; i <= distanceBetweenNodes / 2; i++)
 			{
 				GameObject p = Instantiate(horizontalPathOptions[Random.Range(0, horizontalPathOptions.Length)]);
+				objectsToDestroy.Add(p);
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.right * i + Vector3.up * exit.transform.localPosition.y;
 			}
@@ -460,6 +487,7 @@ public class UnityRoot : MonoBehaviour
 			for (int i = (int)exit.transform.localPosition.y-1; i >= -distanceBetweenNodes / 2; i--)
 			{
 				GameObject p = Instantiate(verticalPathOptions[Random.Range(0, verticalPathOptions.Length)]);
+				objectsToDestroy.Add(p);
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.up * i + Vector3.right * exit.transform.localPosition.x;
 			}
@@ -494,6 +522,7 @@ public class UnityRoot : MonoBehaviour
 			for (int i = (int)exit.transform.localPosition.y+1; i <= distanceBetweenNodes/2; i++)
 			{
 				GameObject p = Instantiate(verticalPathOptions[Random.Range(0, verticalPathOptions.Length)]);
+				objectsToDestroy.Add(p);
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.up * i + Vector3.right * exit.transform.localPosition.x;
 			}

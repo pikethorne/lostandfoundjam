@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
-class GameOver : MonoBehaviour
+class GameStart : MonoBehaviour
 {
 	List<Image> images;
 	List<Button> buttons;
@@ -14,24 +14,14 @@ class GameOver : MonoBehaviour
 	{
 		images = GetComponentsInChildren<Image>().ToList();
 		buttons = GetComponentsInChildren<Button>().ToList();
-		PlayerInfo.Instance.healthChanged += UpdateGameState;
-		GameState.Instance.gameStateChanged += UpdateGameDisplay;
+		GameState.Instance.gameStateChanged += UpdateGameState;
 	}
 
 	public void UpdateGameState()
 	{
-		if(PlayerInfo.Instance.health<=0)
+		if(GameState.Instance.state != GameState.State.Start &&  GameState.Instance.state != GameState.State.Starting)
 		{
-			GameState.Instance.setState(GameState.State.Ending);
-		}
-	}
-
-
-	public void UpdateGameDisplay()
-	{
-		if (GameState.Instance.state != GameState.State.Start && GameState.Instance.state != GameState.State.Starting)
-		{
-			foreach (Image i in images)
+			foreach(Image i in images)
 			{
 				i.enabled = false;
 			}
@@ -43,7 +33,7 @@ class GameOver : MonoBehaviour
 		}
 		else
 		{
-			foreach (Image i in images)
+			foreach(Image i in images)
 			{
 				i.enabled = true;
 			}
@@ -55,9 +45,13 @@ class GameOver : MonoBehaviour
 		}
 	}
 
-	public void buttonUpdateState()
+	public void StartGame()
 	{
+		GameState.Instance.setState(GameState.State.Starting);
+	}
 
-		GameState.Instance.setState(GameState.State.Start);
+	public void EndGame()
+	{
+		Application.Quit();
 	}
 }
