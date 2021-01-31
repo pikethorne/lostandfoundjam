@@ -149,14 +149,14 @@ RectTransform:
   m_GameObject: {fileID: 76069925}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
-  m_Father: {fileID: 1980089078}
-  m_RootOrder: 1
+  m_Father: {fileID: 745849512}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.2, y: -225.4}
+  m_AnchoredPosition: {x: 374, y: -208}
   m_SizeDelta: {x: 400, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76069927
@@ -506,7 +506,7 @@ RectTransform:
   - {fileID: 241918073}
   - {fileID: 1928027222}
   m_Father: {fileID: 2006080280}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 745849512}
   - component: {fileID: 745849514}
   - component: {fileID: 745849513}
+  - component: {fileID: 745849515}
   m_Layer: 0
   m_Name: GameOverWinning
   m_TagString: Untagged
@@ -590,7 +591,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 76069926}
   m_Father: {fileID: 1980089078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -618,7 +620,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bb9dbc92dbadb0f4f8fe19449914dba5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 228cfc0a0f824244db7cc505c433e75d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -636,6 +638,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 745849511}
   m_CullTransparentMesh: 0
+--- !u!95 &745849515
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745849511}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b358479bebaeac44e893392c09a9eab6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &812572182
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,7 +1231,7 @@ RectTransform:
   m_Children:
   - {fileID: 1564436525}
   m_Father: {fileID: 2006080280}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1426,7 +1447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1980089078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1439,9 +1460,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 745849512}
-  - {fileID: 76069926}
   m_Father: {fileID: 2006080280}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1455,7 +1475,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980089077}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1494,9 +1514,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1980089077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838fe69af072ceb4186aa3c865795024, type: 3}
+  m_Script: {fileID: 11500000, guid: 356e3f1dfda78b54b9a9a1ffdaa69916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animateytakey: {fileID: 745849515}
 --- !u!224 &1996179233 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8874814775581077656, guid: b35efd51b651378448060052b1b3300f,
@@ -1595,9 +1616,9 @@ RectTransform:
   m_Children:
   - {fileID: 1047231337}
   - {fileID: 353109803}
-  - {fileID: 1980089078}
   - {fileID: 1842145009}
   - {fileID: 600351283}
+  - {fileID: 1980089078}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

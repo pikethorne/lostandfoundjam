@@ -10,14 +10,17 @@ class GameOverWinning : MonoBehaviour
 {
 	List<Image> images;
 	List<Button> buttons;
-	public void Awake()
+	public Animator animateytakey;
+
+	void Awake()
 	{
+		animateytakey = GetComponentInChildren<Animator>();
 		images = GetComponentsInChildren<Image>().ToList();
 		buttons = GetComponentsInChildren<Button>().ToList();
 		GameState.Instance.gameStateChanged += UpdateGameDisplay;
+		
 	}
 	
-
 	public void UpdateGameDisplay()
 	{
 		if (GameState.Instance.state != GameState.State.Victory)
@@ -43,6 +46,8 @@ class GameOverWinning : MonoBehaviour
 			{
 				b.enabled = true;
 			}
+
+			animateytakey.Play("CatBoyTIIIIIIME");
 		}
 	}
 

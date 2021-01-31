@@ -56,7 +56,7 @@ class FinalBoss : BossEnemy
 		health -= damage;
 		if (health <= 0)
 		{
-			GameState.Instance.setState(GameState.State.Ending);
+			GameState.Instance.setState(GameState.State.Victory);
 			Destroy(gameObject);
 		}
 	}

@@ -299,11 +299,12 @@ public class UnityRoot : MonoBehaviour
 				PlayerInfo.Instance.ReinitializePlayerData();
 				GameState.Instance.setState(GameState.State.InGame);
 			}
-			else if (GameState.Instance.state == GameState.State.Ending)
+			else if (GameState.Instance.state == GameState.State.Ending|| GameState.Instance.state == GameState.State.Victory)
 			{
 				objectsToDestroy.ForEach(g => Destroy(g));
 				objectsToDestroy.Clear();
-				GameState.Instance.setState(GameState.State.Ended);
+				if(GameState.Instance.state == GameState.State.Ending)
+					GameState.Instance.setState(GameState.State.Ended);
 			}
 		};
 	}
