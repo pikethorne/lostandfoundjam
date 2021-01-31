@@ -29,7 +29,7 @@ class GameOver : MonoBehaviour
 
 	public void UpdateGameDisplay()
 	{
-		if (GameState.Instance.state != GameState.State.Start && GameState.Instance.state != GameState.State.Starting)
+		if (GameState.Instance.state != GameState.State.Ending && GameState.Instance.state != GameState.State.Ended)
 		{
 			foreach (Image i in images)
 			{
