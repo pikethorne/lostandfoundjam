@@ -22,6 +22,14 @@ public class GameState
 		}
 	}
 
+	public enum State
+	{
+		Starting,
+		InGame,
+		Paused
+	}
+
 	private static GameState instance;
 	public int level;
+	public State state;
 }

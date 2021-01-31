@@ -91,7 +91,6 @@ public class UnityRoot : MonoBehaviour
 		/// </summary>
 		public List<Node> NodeMap;
 		private bool hasFailed = true;
-
 		public DungeonBuilder(int dd = 5, int nm = 20, float c = 0.3f)
 		{
 			DungeonDepth = dd;
@@ -287,79 +286,93 @@ public class UnityRoot : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void LoadGame()
     {
         if (Application.isPlaying)
         {
-            DungeonBuilder db = new DungeonBuilder();
+			for (int level = 0; level < 4; level++)
+			{
+				DungeonBuilder db = new DungeonBuilder(4+level, 20+level*3);
 
-            Debug.Log(string.Format("Created node map with {0} nodes!", db.NodeMap.Count));
+				Debug.Log(string.Format("Created node map with {0} nodes!", db.NodeMap.Count));
 
-            for(int i = 0; i < db.NodeMap.Count; i++)
-            {
-				DungeonBuilder.Node n = db.NodeMap[i];
-				GameObject[] RoomOptions= { };
+				for (int i = 0; i < db.NodeMap.Count; i++)
+				{
+					DungeonBuilder.Node n = db.NodeMap[i];
+					GameObject[] RoomOptions = { };
 
-				if (n.nodeType == DungeonBuilder.NodeType.Entrance)
-                {
-                    RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Entrance");
+					if (n.nodeType == DungeonBuilder.NodeType.Entrance)
+					{
+						RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Entrance");
 
-                    if (RoomOptions.Length <= 0)
-                    {
-                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "/Entrance] Folder!");
-                    }
-                }
-				else if (n.nodeType == DungeonBuilder.NodeType.Shop)
-                {
-                    RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Shop");
+						if (RoomOptions.Length <= 0)
+						{
+							Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "/Entrance] Folder!");
+						}
+					}
+					else if (n.nodeType == DungeonBuilder.NodeType.Shop)
+					{
+						RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Shop");
 
-                    if (RoomOptions.Length <= 0)
-                    {
-                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "/Shop] Folder!");
-                    }
-                }
-				else if (n.nodeType == DungeonBuilder.NodeType.Normal)
-                {
-                    RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + string.Format("/{0}Exits",4));//need to add logic for room direction-y stuff to get the <4 to work again... bluh
+						if (RoomOptions.Length <= 0)
+						{
+							Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "/Shop] Folder!");
+						}
+					}
+					else if (n.nodeType == DungeonBuilder.NodeType.Normal)
+					{
+						RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + string.Format("/{0}Exits", 4));//need to add logic for room direction-y stuff to get the <4 to work again... bluh
 
-                    if (RoomOptions.Length <= 0)
-                    {
-                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + string.Format("/{0}Exits", n.Connections.Length) + "] Folder!");
-                    }
-                }
-                else if(n.nodeType == DungeonBuilder.NodeType.Boss)
-                {
-                    RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Boss");
+						if (RoomOptions.Length <= 0)
+						{
+							Debug.LogError("No rooms found in the [" + RoomPath + Tileset + string.Format("/{0}Exits", n.Connections.Length) + "] Folder!");
+						}
+					}
+					else if (n.nodeType == DungeonBuilder.NodeType.Boss)
+					{
+						RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Boss");
 
-                    if (RoomOptions.Length <= 0)
-                    {
-                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Boss" + "] Folder!");
-                    }
-                }
-                else if (n.nodeType == DungeonBuilder.NodeType.Treasure)
-                {
-                    RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Treasure");
+						if (RoomOptions.Length <= 0)
+						{
+							Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Boss" + "] Folder!");
+						}
+					}
+					else if (n.nodeType == DungeonBuilder.NodeType.Treasure)
+					{
+						RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/Treasure");
 
-                    if (RoomOptions.Length <= 0)
-                    {
-                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Treasure" + "] Folder!");
-                    }
-                }
-                else if (n.nodeType == DungeonBuilder.NodeType.EndTreasure)
-                {
-                    RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/SuperTreasure");
+						if (RoomOptions.Length <= 0)
+						{
+							Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Treasure" + "] Folder!");
+						}
+					}
+					else if (n.nodeType == DungeonBuilder.NodeType.EndTreasure)
+					{
+						RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/SuperTreasure");
 
-                    if (RoomOptions.Length <= 0)
-                    {
-                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Treasure" + "] Folder!");
-                    }
-                }
+						if (RoomOptions.Length <= 0)
+						{
+							Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Treasure" + "] Folder!");
+						}
+					}
 
-				GameObject g = Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
-				Tuple<int, int> position = db.nodePositions[n.spawnIndex];
-				g.transform.position = Vector3.zero + Vector3.right * position.Item1 * distanceBetweenNodes + Vector3.up * position.Item2 * distanceBetweenNodes;
+					GameObject g = Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
+					Tuple<int, int> position = db.nodePositions[n.spawnIndex];
+					g.transform.position = Vector3.zero + Vector3.right * position.Item1 * distanceBetweenNodes + Vector3.up * position.Item2 * distanceBetweenNodes + Vector3.right*500*level;
 
-				PopulateExits(n, g, db);
+					BossItemDecideyTime bossItemLev = g.GetComponent<BossItemDecideyTime>();
+					if(bossItemLev != null)
+					{
+						bossItemLev.currentLevel = level;
+					}
+					LevelTeleport teleport = g.GetComponentInChildren<LevelTeleport>();
+					if(teleport != null)
+					{
+						teleport.level = level;
+					}
+
+					PopulateExits(n, g, db);
+				}
 			}
 
 			

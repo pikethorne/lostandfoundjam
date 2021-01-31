@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LevelTeleport.cs" />
     <Compile Include="Assets\PostBossItemTakey.cs" />
     <Compile Include="Assets\GameState.cs" />
     <Compile Include="Assets\PickupHoover5000.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Assets\RoomController.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\Bullet.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\CharacterPart.cs" />
+    <Compile Include="Assets\Scripts\CharacterElements\GameOver.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\GunnShoot.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\Pickups.cs" />
     <Compile Include="Assets\Scripts\CharacterElements\PlayerInfo.cs" />

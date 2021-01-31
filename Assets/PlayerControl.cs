@@ -46,29 +46,35 @@ public class PlayerControl : MonoBehaviour
     /// </summary>
     void Update()
     {
-        UpdateGun();
-        HandleMovement();
+		if (GameState.Instance.state == GameState.State.InGame)
+		{
+			UpdateGun();
+			HandleMovement();
+		}
     }
 
     private void FixedUpdate()
     {
-        Vector2 totalVelocity = Vector2.zero;
+		if (GameState.Instance.state == GameState.State.InGame)
+		{
+			Vector2 totalVelocity = Vector2.zero;
 
-        foreach(Vector2 vb in velocities.Values)
-        {
-            totalVelocity += vb;
-        }
+			foreach (Vector2 vb in velocities.Values)
+			{
+				totalVelocity += vb;
+			}
 
-        if (totalVelocity.magnitude > PlayerInfo.Instance.speed * 2f)
-        {
-            totalVelocity = totalVelocity * PlayerInfo.Instance.speed;
+			if (totalVelocity.magnitude > PlayerInfo.Instance.speed * 2f)
+			{
+				totalVelocity = totalVelocity * PlayerInfo.Instance.speed;
+			}
+			else if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) <= 0.125f && Mathf.Abs(Input.GetAxisRaw("Vertical")) <= 0.125f)
+			{
+				totalVelocity = Vector2.zero;
+			}
+
+			rb.velocity = totalVelocity;
 		}
-        else if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) <= 0.125f && Mathf.Abs(Input.GetAxisRaw("Vertical")) <= 0.125f)
-        {
-            totalVelocity = Vector2.zero;
-        }
-
-        rb.velocity = totalVelocity;
     }
 
     void HandleMovement()
