@@ -16,7 +16,7 @@ class FinalBoss : BossEnemy
 	private void Awake()
 	{
 		animator = GetComponent<Animator>();
-		InvokeRepeating("FireBullets", 0, 5);
+		InvokeRepeating("FireBullets", 0, 2);
 	}
 
 	private void Update()

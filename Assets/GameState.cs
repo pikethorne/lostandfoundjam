@@ -29,7 +29,7 @@ public class GameState
 		InGame,
 		Paused,
 		Ending,
-		Ended
+		Ended,Victory
 	}
 
 	private static GameState instance;
