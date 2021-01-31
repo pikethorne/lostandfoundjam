@@ -47,6 +47,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4180967463514530887, guid: 48f252bbe6112d749b802386688ae263,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12c0aea8371bb384ba44b8c48c6a5dff,
+        type: 3}
     - target: {fileID: 4180967463514530888, guid: 48f252bbe6112d749b802386688ae263,
         type: 3}
       propertyPath: m_RootOrder
@@ -172,6 +178,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1575733028195334850, guid: d3e1b4aff4281f040b3dd48dceff33a0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4d4a281dbbbd7cd46829c6dd4e0e9312,
+        type: 3}
     - target: {fileID: 1575733028195334860, guid: d3e1b4aff4281f040b3dd48dceff33a0,
         type: 3}
       propertyPath: m_Name
@@ -197,6 +209,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor
       objectReference: {fileID: 0}
+    - target: {fileID: 4180967463514530887, guid: 48f252bbe6112d749b802386688ae263,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12c0aea8371bb384ba44b8c48c6a5dff,
+        type: 3}
     - target: {fileID: 4180967463514530888, guid: 48f252bbe6112d749b802386688ae263,
         type: 3}
       propertyPath: m_RootOrder
@@ -272,6 +290,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4180967463514530887, guid: 48f252bbe6112d749b802386688ae263,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12c0aea8371bb384ba44b8c48c6a5dff,
+        type: 3}
     - target: {fileID: 4180967463514530888, guid: 48f252bbe6112d749b802386688ae263,
         type: 3}
       propertyPath: m_RootOrder
@@ -396,6 +420,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575733028195334850, guid: d3e1b4aff4281f040b3dd48dceff33a0,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ab8bcd0fc385e9946b26fad2bcebcd6b,
+        type: 3}
+    - target: {fileID: 1575733028195334851, guid: d3e1b4aff4281f040b3dd48dceff33a0,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.9868164
       objectReference: {fileID: 0}
     - target: {fileID: 1575733028195334860, guid: d3e1b4aff4281f040b3dd48dceff33a0,
         type: 3}

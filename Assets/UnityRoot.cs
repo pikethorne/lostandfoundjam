@@ -26,7 +26,7 @@ public class UnityRoot : MonoBehaviour
 	{
 		public Dictionary<int, Tuple<int, int>> nodePositions;
 
-		public enum NodeType { Normal, Treasure, Miniboss, Boss, Entrance, Shop };
+		public enum NodeType { Normal, Treasure, Miniboss, Boss, Entrance, Shop , EndTreasure };
 
 		/// <summary>
 		/// oh now we're in too funkin deep bro
@@ -90,22 +90,27 @@ public class UnityRoot : MonoBehaviour
 		/// suffer
 		/// </summary>
 		public List<Node> NodeMap;
+		private bool hasFailed = true;
 
 		public DungeonBuilder(int dd = 5, int nm = 20, float c = 0.3f)
 		{
 			DungeonDepth = dd;
 			nodeMax = nm;
 			Complexity = c;
+			while (hasFailed)//I made this horrible lol
+			{
+				hasFailed = false;
+				NodeMap = new List<Node>();
+				nodePositions = new Dictionary<int, Tuple<int, int>>();
 
-			NodeMap = new List<Node>();
-			nodePositions = new Dictionary<int, Tuple<int, int>>();
+				Node StartNode = new Node(0, NodeType.Entrance);
+				nodePositions.Add(0, new Tuple<int, int>(0, 0));
 
-			Node StartNode = new Node(0, NodeType.Entrance);
-			nodePositions.Add(0, new Tuple<int, int>(0, 0));
-
-			NodeMap.Add(StartNode);
-			StartNode.spawnIndex = 0;
-			NodeSetup(StartNode);
+				NodeMap.Add(StartNode);
+				StartNode.spawnIndex = 0;
+				NodeSetup(StartNode);
+			}
+			
 		}
 		/// <summary>
 		/// 
@@ -140,6 +145,7 @@ public class UnityRoot : MonoBehaviour
 			else
 			{
 				Debug.LogError("Could not find a vaild position, curling up into a ball and dying");
+				hasFailed = true;
 				return;
 			}
 
@@ -165,30 +171,35 @@ public class UnityRoot : MonoBehaviour
             // How many branches will this room have
             int rollthedice = 0;
 
-            // boss rooms and such shouldn't really branch unless eric wants them to i guess (he doesn't)
-            if (n.nodeType == NodeType.Normal || n.nodeType == NodeType.Entrance)
-            {
-                // if we exceeded the max, this room only has one connection
-                if (NodeMap.Count < nodeMax && n.Depth <= DungeonDepth)
-                {
-                    for (int i = 0; i < 3; i++)
-                    {
-                        float limit = 100f * (n.Depth / DungeonDepth) + 10f * i * Mathf.Max((Random.value - Complexity), 0);
-                        float check = Random.value * 100f;
+			// boss rooms and such shouldn't really branch unless eric wants them to i guess (he doesn't)
+			if (n.nodeType == NodeType.Normal || n.nodeType == NodeType.Entrance)
+			{
+				// if we exceeded the max, this room only has one connection
+				if (NodeMap.Count < nodeMax && n.Depth <= DungeonDepth)
+				{
+					for (int i = 0; i < 3; i++)
+					{
+						float limit = 100f * (n.Depth / DungeonDepth) + 10f * i * Mathf.Max((Random.value - Complexity), 0);
+						float check = Random.value * 100f;
 
-                        rollthedice += 1;
-                    }
+						rollthedice += 1;
+					}
 
-                    if (NodeMap.Count < nodeMax - 1 && rollthedice <= 1)
-                    {
-                        rollthedice += Random.Range(1, 4);
-                    }
-                }
-                else
-                {
-                    rollthedice = 0;
-                }
-            }
+					if (NodeMap.Count < nodeMax - 1 && rollthedice <= 1)
+					{
+						rollthedice += Random.Range(1, 4);
+					}
+				}
+				else
+				{
+					rollthedice = 0;
+				}
+			}
+			else if (n.nodeType == NodeType.Boss)
+			{
+				rollthedice = 1;
+			}
+
 
             // ehhhhh just in case
             int connectionCount = 1 + Mathf.Min(rollthedice, getMaxValidConnections(n.spawnIndex));
@@ -212,7 +223,11 @@ public class UnityRoot : MonoBehaviour
                 {
                     NodeType newType = NodeType.Normal;
 
-                    if (n.Depth >= 1 && n.Connections.Length > 1)
+					if(n.nodeType == NodeType.Boss)
+					{
+						newType = NodeType.EndTreasure;
+					}
+                    else if (n.Depth >= 1 && n.Connections.Length > 1)
                     {
                         float specialRoll = Random.value * 100f;
 
@@ -251,6 +266,8 @@ public class UnityRoot : MonoBehaviour
 							shopSpawned = true;
                         }
                     }
+
+					
 
                     n.Connections[i] = new Node(n.Depth + 1, newType);
 					NodeMap.Add(n.Connections[i]);
@@ -328,6 +345,15 @@ public class UnityRoot : MonoBehaviour
                         Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Treasure" + "] Folder!");
                     }
                 }
+                else if (n.nodeType == DungeonBuilder.NodeType.EndTreasure)
+                {
+                    RoomOptions = Resources.LoadAll<GameObject>(RoomPath + Tileset + "/SuperTreasure");
+
+                    if (RoomOptions.Length <= 0)
+                    {
+                        Debug.LogError("No rooms found in the [" + RoomPath + Tileset + "Treasure" + "] Folder!");
+                    }
+                }
 
 				GameObject g = Instantiate(RoomOptions[Random.Range(0, RoomOptions.Length)]);
 				Tuple<int, int> position = db.nodePositions[n.spawnIndex];
@@ -360,6 +386,26 @@ public class UnityRoot : MonoBehaviour
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.right * i + Vector3.up * exit.transform.localPosition.y;
 			}
+
+			if (n.nodeType == DungeonBuilder.NodeType.Boss && n.Connections.Any(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure))
+			{
+				int endNode = n.Connections.First(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure).spawnIndex;
+				if (db.nodePositions[endNode].Equals(new Tuple<int, int>(positionOfNode.Item1 - 1, positionOfNode.Item2)))
+				{
+					exit.activateTile = false;
+					exit.gameObject.AddComponent<PostBossItemTakey>();
+					BossEnemy boss = g.GetComponentInChildren<BossEnemy>();
+					if (boss == null)
+					{
+						Debug.LogError("Was no boss spawned? that's kinda cringe");
+					}
+					else
+					{
+						boss.bossExit = exit;
+					}
+				}
+			}
+
 		}
 
 		if (db.nodePositions.Any(no => n.Connections.Any(k => k.spawnIndex == no.Key)
@@ -373,12 +419,30 @@ public class UnityRoot : MonoBehaviour
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.right * i + Vector3.up * exit.transform.localPosition.y;
 			}
+
+			if (n.nodeType == DungeonBuilder.NodeType.Boss && n.Connections.Any(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure))
+			{
+				int endNode = n.Connections.First(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure).spawnIndex;
+				if (db.nodePositions[endNode].Equals(new Tuple<int, int>(positionOfNode.Item1 + 1, positionOfNode.Item2)))
+				{
+					exit.activateTile = false;
+					exit.gameObject.AddComponent<PostBossItemTakey>();
+					BossEnemy boss = g.GetComponentInChildren<BossEnemy>();
+					if (boss == null)
+					{
+						Debug.LogError("Was no boss spawned? that's kinda cringe");
+					}
+					else
+					{
+						boss.bossExit = exit;
+					}
+				}
+			}
 		}
 
 		if (db.nodePositions.Any(no => n.Connections.Any(k => k.spawnIndex == no.Key)
 			&& no.Value.Equals(new Tuple<int, int>(positionOfNode.Item1, positionOfNode.Item2-1))))
-		{
-			RoomExit exit = roomExitPoints.OrderBy(r => r.transform.localPosition.y).First();
+		{			RoomExit exit = roomExitPoints.OrderBy(r => r.transform.localPosition.y).First();
 			exit.activateTile = true;
 			for (int i = (int)exit.transform.localPosition.y-1; i >= -distanceBetweenNodes / 2; i--)
 			{
@@ -386,11 +450,32 @@ public class UnityRoot : MonoBehaviour
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.up * i + Vector3.right * exit.transform.localPosition.x;
 			}
+
+			if (n.nodeType == DungeonBuilder.NodeType.Boss && n.Connections.Any(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure))
+			{
+				int endNode = n.Connections.First(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure).spawnIndex;
+				if (db.nodePositions[endNode].Equals(new Tuple<int, int>(positionOfNode.Item1, positionOfNode.Item2 -1)))
+				{
+					exit.activateTile = false;
+					exit.gameObject.AddComponent<PostBossItemTakey>();
+					BossEnemy boss = g.GetComponentInChildren<BossEnemy>();
+					if (boss == null)
+					{
+						Debug.LogError("Was no boss spawned? that's kinda cringe");
+					}
+					else
+					{
+						boss.bossExit = exit;
+					}
+				}
+			}
 		}
 
 		if (db.nodePositions.Any(no => n.Connections.Any(k => k.spawnIndex == no.Key)
 			&& no.Value.Equals(new Tuple<int, int>(positionOfNode.Item1, positionOfNode.Item2+1))))
 		{
+			
+
 			RoomExit exit = roomExitPoints.OrderBy(r => r.transform.localPosition.y).Last();
 			exit.activateTile = true;
 			for (int i = (int)exit.transform.localPosition.y+1; i <= distanceBetweenNodes/2; i++)
@@ -398,6 +483,21 @@ public class UnityRoot : MonoBehaviour
 				GameObject p = Instantiate(verticalPathOptions[Random.Range(0, verticalPathOptions.Length)]);
 				p.transform.parent = g.transform;
 				p.transform.localPosition = Vector3.zero + Vector3.up * i + Vector3.right * exit.transform.localPosition.x;
+			}
+
+			if (n.nodeType == DungeonBuilder.NodeType.Boss && n.Connections.Any(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure))
+			{
+				int endNode = n.Connections.First(no => no.nodeType == DungeonBuilder.NodeType.EndTreasure).spawnIndex;
+				if (db.nodePositions[endNode].Equals(new Tuple<int, int>(positionOfNode.Item1, positionOfNode.Item2 + 1)))
+				{
+					exit.activateTile = false;
+					exit.gameObject.AddComponent<PostBossItemTakey>();
+					BossEnemy boss = g.GetComponentInChildren<BossEnemy>();
+					if (boss != null)
+					{
+						boss.bossExit = exit;
+					}
+				}
 			}
 		}
 	}

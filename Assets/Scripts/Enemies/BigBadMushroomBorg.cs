@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-class BigBadMushroomBorg : Enemy
+class BigBadMushroomBorg : BossEnemy
 {
 	[SerializeField]
 	GameObject bulletPrefab;
