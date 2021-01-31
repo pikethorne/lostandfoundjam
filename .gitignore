@@ -73,3 +73,5 @@ crashlytics-build.properties
 # Sound source files
 /Sounds/Sources
 
+Assets/Art/CLIP Files/All_equip_set_01.clip
+Assets/Art/CLIP Files/MC_robot_asset_V01.clip
