@@ -18,7 +18,7 @@ class EnemyField : MonoBehaviour
 		if (enemies.Count(e => e!= null && e.enabled) == 0)
 		{
 			roomExits.ForEach(a =>{ a.activateTile = true; a.UpdateTile(); });
-			GetComponent<RandomPickupDropper>()?.spawnAPopup();
+			GetComponent<RandomPickupDropper>()?.spawnAPickup();
 			Destroy(this);
 		}
 	}

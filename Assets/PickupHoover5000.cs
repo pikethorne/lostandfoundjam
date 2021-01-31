@@ -18,21 +18,41 @@ class PickupHoover5000: MonoBehaviour
 	{
 		if (col.gameObject.tag == "Pickup")
 		{
+			PickupRequirements pickupReqs = col.gameObject.GetComponent<PickupRequirements>();
+			if (pickupReqs != null && !pickupReqs.requirementsMet())
+				return;
+			pickupReqs?.takeRequirements();
 			
 			PickupHolder pickup = col.gameObject.GetComponent<PickupHolder>();
-			if(pickup.itemPickup)
+			if (pickup != null)
 			{
-				//shold probably add some check so you don't waste pickups? is anyone going to pick up 100 bombs? I sure hope not
-				pickup.statUpgrade.activateInstantEffects();
-				soundPlayer.clip = pickupClip;
-				soundPlayer.Play();
+				if (pickup.coolDownForPickup > 0)
+					return;
+				if (pickup.itemPickup)
+				{
+					//shold probably add some check so you don't waste pickups? is anyone going to pick up 100 bombs? I sure hope not
+					pickup.statUpgrade.activateInstantEffects();
+					soundPlayer.clip = pickupClip;
+					soundPlayer.Play();
+				}
+				else
+				{
+					PlayerInfo.Instance.giveStatUpgrade(pickup.statUpgrade);
+				}
+
+				Destroy(col.gameObject);
 			}
 			else
 			{
-				PlayerInfo.Instance.giveStatUpgrade(pickup.statUpgrade);
+				MultipickupPickup multiPickup = col.gameObject.GetComponent<MultipickupPickup>();
+				
+				if (multiPickup != null)
+				{
+					multiPickup.spawnPickups();
+					Destroy(col.gameObject);
+				}
 			}
 
-			Destroy(col.gameObject);
 		}
 		else if(col.gameObject.tag == "Part")
 		{
