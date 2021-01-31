@@ -24,7 +24,7 @@ class LevelTeleport : ToggleTile
 	{
 		if(col.gameObject.tag == "Player" && activateTile)
 		{
-			col.transform.position = Vector3.zero + Vector3.right * 500 * level;
+			col.transform.position = Vector3.zero + Vector3.right * 500 * (level+1);
 		}
 	}
 }

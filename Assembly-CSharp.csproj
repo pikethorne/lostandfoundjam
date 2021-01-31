@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\CharacterElements\ToggleTile.cs" />
     <Compile Include="Assets\Scripts\CharacterPartHolder.cs" />
     <Compile Include="Assets\Scripts\BossItemDecideyTime.cs" />
+    <Compile Include="Assets\Scripts\Enemies\FinalBoss.cs" />
     <Compile Include="Assets\Scripts\Enemies\BigBadMushroomBorg.cs" />
     <Compile Include="Assets\Scripts\Enemies\CopterCat.cs" />
     <Compile Include="Assets\Scripts\Enemies\BossEnemy.cs" />
