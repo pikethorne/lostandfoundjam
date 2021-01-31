@@ -2,13 +2,9 @@
 
 class RoomExit : ToggleTile
 {
-	public int teleportID; 
-
-	private void OnTriggerEnter2D(Collider2D col)
+	public override void UpdateTile()
 	{
-		if(col.gameObject.tag == "Player" && activateTile)
-		{
-			col.transform.position = Vector3.right * teleportID * 50;
-		}
+		GetComponent<Collider2D>().enabled = !activateTile;
+		base.UpdateTile();
 	}
 }

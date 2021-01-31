@@ -115,7 +115,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.5
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dbd7ad8d01a4304e88fa9a80f6c4298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 1
-  max: 4
+  min: 2
+  max: 6
   randomPickupDropper: {fileID: 1587582874839592344}
   heat: 12
 --- !u!114 &1587582874839592344
@@ -154,14 +154,11 @@ MonoBehaviour:
   pickups:
   - gameObject: {fileID: 4699671642348598077, guid: 236af4850c3224a4a817cfe1423a1d34,
       type: 3}
-    amount: 20
-  - gameObject: {fileID: 2698675912496707275, guid: 2aece3b6a1086dd4e897a911afa2d853,
+    amount: 14
+  - gameObject: {fileID: 2698675912496707275, guid: de09ad00f8087124192cc921aade22c3,
       type: 3}
-    amount: 1
+    amount: 6
   - gameObject: {fileID: 4699671642348598077, guid: 14d57272a59d39644a36b1fbd7ad600a,
-      type: 3}
-    amount: 3
-  - gameObject: {fileID: 2698675912496707275, guid: f1c75df7642374b45b09c6d4f5e31fb2,
       type: 3}
     amount: 3
 --- !u!114 &-3481687164747686851

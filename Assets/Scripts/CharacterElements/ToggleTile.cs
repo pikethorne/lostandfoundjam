@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 class ToggleTile : MonoBehaviour
 {
@@ -7,24 +8,29 @@ class ToggleTile : MonoBehaviour
 	[SerializeField]
 	public Sprite activeSprite;
 	public bool activateTile;
-	private SpriteRenderer spriteRenderer;
+	private List<SpriteRenderer> spriteRenderers;
 	private void Start()
 	{
-		spriteRenderer = GetComponent<SpriteRenderer>();
+		spriteRenderers = new List<SpriteRenderer>();
+		spriteRenderers.Add(GetComponent<SpriteRenderer>());
+		spriteRenderers.AddRange(GetComponentsInChildren<SpriteRenderer>());
 		UpdateTile();
 	}
 
 	public virtual void UpdateTile()
 	{
-		if(spriteRenderer!=null)
+		foreach (SpriteRenderer spriteRenderer in spriteRenderers)
 		{
-			if (activateTile)
+			if (spriteRenderer != null)
 			{
-				spriteRenderer.sprite = activeSprite;
-			}
-			else
-			{
-				spriteRenderer.sprite = inactiveSprite;
+				if (activateTile)
+				{
+					spriteRenderer.sprite = activeSprite;
+				}
+				else
+				{
+					spriteRenderer.sprite = inactiveSprite;
+				}
 			}
 		}
 	}

@@ -5,11 +5,9 @@ using UnityEngine;
 class EnemyField : MonoBehaviour
 {
 	public bool enemiesActive;
-	List<RoomExit> roomExits;
 	List<Enemy> enemies;
 	private void Awake()
 	{
-		roomExits = GetComponentsInChildren<RoomExit>().ToList();
 		enemies = GetComponentsInChildren<Enemy>().ToList();
 	}
 
@@ -17,7 +15,6 @@ class EnemyField : MonoBehaviour
 	{
 		if (enemies.Count(e => e!= null && e.enabled) == 0)
 		{
-			roomExits.ForEach(a =>{ a.activateTile = true; a.UpdateTile(); });
 			GetComponent<RandomPickupDropper>()?.spawnAPickup();
 			Destroy(this);
 		}

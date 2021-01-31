@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2489207441511792824}
   - component: {fileID: 6859507463937586977}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6026886242536963066}
   - component: {fileID: 8902161063702513660}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6698978650387547408}
   - component: {fileID: 1022199959048960330}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8875544661033431427}
   - component: {fileID: 642057462191358268}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2667625735700640276}
   - component: {fileID: 8368889015602571081}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Spine2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,9 +420,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4480268850261198254}
-  - component: {fileID: 6126176274973235086}
   - component: {fileID: 5634451191798755698}
-  m_Layer: 0
+  - component: {fileID: 1792226568371386470}
+  - component: {fileID: -2298594292999235017}
+  m_Layer: 16
   m_Name: Miniboss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,20 +445,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6126176274973235086
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6439415129160023917}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.57316506
-  m_Height: 3.8201828
-  m_Direction: 1
-  m_Center: {x: 1.0442659, y: 1.9422016, z: 0}
 --- !u!114 &5634451191798755698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,6 +463,41 @@ MonoBehaviour:
     type: 3}
   bulletModel: {fileID: 21300000, guid: 041749adaf392594a8967f62b8672c40, type: 3}
   gunShootPoint: {fileID: 2223001993720097832}
+--- !u!95 &1792226568371386470
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439415129160023917}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c33b0be8d7768a4ba86aad9b744379d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &-2298594292999235017
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6439415129160023917}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.0741179, y: 1.878005}
+  m_Size: {x: 0.86287737, y: 3.7467594}
+  m_Direction: 0
 --- !u!1 &6647013818555119785
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,7 +508,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492344515706783634}
   - component: {fileID: 6945968809216282899}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Spine1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2747037476883816104}
   - component: {fileID: 6517975296568327620}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2223001993720097832}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: gunshootpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

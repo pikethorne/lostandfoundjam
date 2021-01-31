@@ -12,7 +12,8 @@ public class StatUpgrade
 		None,
 		Coins,
 		Bombs,
-		Keys
+		Keys,
+		Health
 	}
 
 	public float damage;
@@ -46,6 +47,10 @@ public class StatUpgrade
 		else if (instantEffect == InstantEffect.Keys)
 		{
 			Pickups.Instance.addKey(instantEffectValue);
+		}
+		else if (instantEffect == InstantEffect.Health)
+		{
+			PlayerInfo.Instance.addHealth(instantEffectValue);
 		}
 	}
 }
