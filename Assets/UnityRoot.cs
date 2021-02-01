@@ -109,6 +109,8 @@ public class UnityRoot : MonoBehaviour
 				NodeMap.Add(StartNode);
 				StartNode.spawnIndex = 0;
 				NodeSetup(StartNode);
+				if (!NodeMap.Any(n => n.nodeType == NodeType.Boss) || !NodeMap.Any(n => n.nodeType == NodeType.EndTreasure))
+					hasFailed = true;
 			}
 			
 		}
@@ -435,11 +437,7 @@ public class UnityRoot : MonoBehaviour
 					exit.activateTile = false;
 					exit.gameObject.AddComponent<PostBossItemTakey>();
 					BossEnemy boss = g.GetComponentInChildren<BossEnemy>();
-					if (boss == null)
-					{
-						Debug.LogError("Was no boss spawned? that's kinda cringe");
-					}
-					else
+					if (boss != null)
 					{
 						boss.bossExit = exit;
 					}
@@ -469,11 +467,7 @@ public class UnityRoot : MonoBehaviour
 					exit.activateTile = false;
 					exit.gameObject.AddComponent<PostBossItemTakey>();
 					BossEnemy boss = g.GetComponentInChildren<BossEnemy>();
-					if (boss == null)
-					{
-						Debug.LogError("Was no boss spawned? that's kinda cringe");
-					}
-					else
+					if (boss != null)
 					{
 						boss.bossExit = exit;
 					}
@@ -501,11 +495,7 @@ public class UnityRoot : MonoBehaviour
 					exit.activateTile = false;
 					exit.gameObject.AddComponent<PostBossItemTakey>();
 					BossEnemy boss = g.GetComponentInChildren<BossEnemy>();
-					if (boss == null)
-					{
-						Debug.LogError("Was no boss spawned? that's kinda cringe");
-					}
-					else
+					if (boss != null)
 					{
 						boss.bossExit = exit;
 					}
